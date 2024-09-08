@@ -1,19 +1,12 @@
-import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
-import { ApiContextProvider } from "@/Context/ApiContext";
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import { ProfileContextProvider } from "@/Context/ProfileContext";
 import React from "react";
 import Heading from "../../components/Heading";
 import ContainerWidth from "../../components/ContainerWidth";
 import { Button } from "@/components/ui/button";
 import Link from "next/link"; // Importing Link from next/link
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export default function RootLayout({
   children,
@@ -21,12 +14,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={outfit.className}>
-      <head>
-        <title>WithList</title>
-      </head>
-      <body>
-        <Navbar />
+
+    <>
+            <Navbar />
         <div className="pt-20">
           <ContainerWidth>
             <Heading text="WithList" />
@@ -47,7 +37,7 @@ export default function RootLayout({
         </div>
 
         <Footer />
-      </body>
-    </html>
+
+    </>
   );
 }

@@ -53,8 +53,8 @@ export function Selector({ onSelect }: SelectorProps)  {
       <SelectContent>
         <SelectGroup>
                   <SelectLabel>Types</SelectLabel>
-                    {btns.map((btn) => (
-                        <SelectItem value={`${btn.name + '-'} ${btn.id}`}>{btn.name}</SelectItem>
+                    {btns.map((btn,index) => (
+                        <SelectItem key={index} value={`${btn.name + '-'} ${btn.id}`}>{btn.name}</SelectItem>
         ))}
         </SelectGroup>
       </SelectContent>

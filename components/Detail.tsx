@@ -146,7 +146,7 @@ export default function Detail({ movieDetails, videoDetails, image , kind }: any
             country
           </p>
           <div className="flex flex-col lg:flex-row gap-2 items-center lg:items-start w-full">
-            <p className="bg-transparent backdrop-blur-3xl border border-white/30 px-5 py-2 lg:text-sm mBlur borderGlass rounded-3xl inline-block text-white font-medium">
+            <div className="bg-transparent backdrop-blur-3xl border border-white/30 px-5 py-2 lg:text-sm mBlur borderGlass rounded-3xl inline-block text-white font-medium">
               <div className="flex w-full gap-2 flex-col md:flex-row items-center justify-center">
                 <span>Production Companies:</span>
                 <div className="flex ">
@@ -162,7 +162,7 @@ export default function Detail({ movieDetails, videoDetails, image , kind }: any
                   )}
                 </div>
               </div>
-            </p>
+            </div>
           </div>
           <div className="hidden lg:block mBlur borderGlass rounded-3xl ">
             <p className="bg-transparent text-4xl backdrop-blur-3xl border border-white/30 px-4 py-1 mBlur borderGlass rounded-3xl inline-block text-white font-bold">
