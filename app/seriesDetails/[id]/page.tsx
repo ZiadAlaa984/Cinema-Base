@@ -9,6 +9,7 @@ import Heading from '@/components/Heading';
 import SliderCast from '@/components/Sliders/SliderCast/SliderCast';
 import Col from '@/components/Col';
 import Loading from '@/components/loading/page';
+import Season from '@/components/Season';
 
 export default function SeriesDetails() {
   const { id } = useParams<{ id: string }>();
@@ -111,18 +112,19 @@ setMovieId(id)
                 <SliderCast kind={'tv'} id={id} />
               </div>
             </div>
-            <div className="Seasons">
+            {seasons.length > 0 && 
+             <div className="Seasons">
               <Heading text='Seasons' />
               <div className="grid md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5 grid-cols-2  gap-4 ">
                 {seasons.map(season => (
                   <>
                     {season.poster_path && 
-                                        <Col
+                                        <Season
                     key={season.id}
-                    kind='season'
+
                     date={season.air_date}
                     id={season.id}
-                    overlay={season.overview.split(' ').slice(0, 30).join(' ')}
+                    overlay={season.overview.split(' ').slice(0, 60).join(' ')}
                     star={season.vote_average.toFixed(1)}
                     src={season.poster_path}
                     name={season.name.split(' ').slice(0, 3).join(' ')}
@@ -133,6 +135,7 @@ setMovieId(id)
                 ))}
               </div>
             </div>
+            }
             <div className="Recommended">
               <Heading text='RECOMMENDATIONS' />
               <div className="grid md:grid-cols-3 lg:grid-cols-4  xl:grid-cols-5 grid-cols-2  gap-4 ">

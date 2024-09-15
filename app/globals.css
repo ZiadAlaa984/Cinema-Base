@@ -35,22 +35,16 @@ section {
 
 body {
   background:
-    radial-gradient(circle, rgba(0, 0, 0, 0.713), rgba(0, 0, 0, 0.575)),
+    radial-gradient(circle, rgba(0, 0, 0, 0.713), rgba(0, 0, 0, 0.775)),
     url('../public/hero.jpg');
   background-size: cover;
-    min-height: 100vh;
-
-    background-attachment: fixed;
-
-
+  min-height: 100vh;
+  background-attachment: fixed;
 }
-
 .row {
   @apply flex flex-wrap items-center
 }
-/* HTML: <div class="loader"></div> */
-/* HTML: <div class="loader"></div> */
-/* HTML: <div class="loader"></div> */
+
 .loader {
   width: fit-content;
   font-weight: bold;
@@ -69,4 +63,23 @@ body {
   to {
     clip-path: inset(0 -1ch 0 0)
   }
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
 }

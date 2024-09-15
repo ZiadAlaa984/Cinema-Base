@@ -20,7 +20,7 @@ interface MovieDetails {
   poster_path?: string;
 }
 
-export default function Detail({ movieDetails, videoDetails, image , kind }: any) {
+export default function Detail({ movieDetails ,videoDetails, image , kind }: any) {
   const {
     movieId,
     RemoveWatchList,

@@ -6,6 +6,8 @@ import 'swiper/css/pagination';
 import { FreeMode } from 'swiper/modules';
 import { ApiContext } from '@/Context/ApiContext';
 import './styles.css';
+import Link from 'next/link';
+import Image from 'next/image';
 
 // Assuming these types are defined somewhere in your codebase
 interface Actor {
@@ -93,9 +95,10 @@ export default function SliderCast({ id, kind }: { id: string; kind?: string }) 
                             key={actor.id} 
                             className='rounded-lg overflow-hidden text-[12px] bg-transparent text-2xl backdrop-blur-3xl border border-white/30 lg:text-sm mBlur borderGlass inline-block text-white font-medium'
                         >
-                            <div className="cast-member">
+                            <Link href={`/celebritiesDetalis/${actor.id}`}>
+                                                            <div className="cast-member">
                                 {actor.profile_path ? (
-                                    <img
+                                    <Image
                                         src={`https://image.tmdb.org/t/p/w200/${actor.profile_path}`}
                                         alt={actor.name}
                                         className="cast-img h-[40px] object-contain"
@@ -105,11 +108,13 @@ export default function SliderCast({ id, kind }: { id: string; kind?: string }) 
                                 )}
                                 <p className="cast-name text-sm mt-1">{actor.name.split(' ').slice(0, 1).join(' ')}</p>
                             </div>
+                            </Link>
+
                         </SwiperSlide>
                     )
                 ))
             ) : (
-                <div>No cast available</div>
+                <h3 className='text-white font-bold text-center text-3xl'>No cast available</h3>
             )}
         </Swiper>
     );

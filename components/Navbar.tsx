@@ -14,9 +14,7 @@ export default function Navbar() {
   const [loading, setLoading] = useState<boolean>(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState);
-  };
+
   useEffect(() => {
     async function fetchData(query: string) {
       setLoading(true);
@@ -40,10 +38,18 @@ export default function Navbar() {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
+  const toggleMenu = () => {
+    setIsMenuOpen((prevState) => !prevState);
+  };
+
+  const closeMenuAndClearInput = () => {
+    setIsMenuOpen(false);
+    setSearchQuery(""); // Clear the input
+  };
 
   return (
     <nav className="md:px-8 py-4 px-4  fixed bg-transparent backdrop-blur-2xl z-50 border-b  border-gray-100/25 w-full ">
-      <div className=" max-w-screen-2xl w-full  mx-auto flex justify-between items-center">
+      <div className=" max-w-screen-2xl container w-full  mx-auto flex justify-between items-center">
         <div className="flex   w-full justify-between items-center    text-white rounded-3xl">
           <Link href="/">
                       <h2 className="text-3xl font-bold flex ">Cinema Base</h2>
@@ -65,6 +71,11 @@ export default function Navbar() {
               <li>
                 <Link href="/series" className="text-xl">
                   Series
+                </Link>
+              </li>
+              <li>
+                <Link href="/celebrities" className="text-xl">
+                  celebrities
                 </Link>
               </li>
             </ul>
@@ -105,6 +116,7 @@ export default function Navbar() {
                         (movie) =>
                           movie?.poster_path && (
                             <Link
+
                               key={movie.id}
                               href={`/seriesDetails/${movie.id}`}
                               className="block z-[99999999999999] relative bg-transparent backdrop-blur-3xl"
@@ -223,6 +235,7 @@ export default function Navbar() {
                               movie?.poster_path && (
 
                                 <Link
+                                   onClick={closeMenuAndClearInput} 
                                   key={movie.id}
                                   href={`/seriesDetails/${movie.id}`}
                                   className="block z-[99999999999999] relative bg-transparent backdrop-blur-3xl"

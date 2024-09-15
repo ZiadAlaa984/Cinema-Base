@@ -9,12 +9,15 @@ interface ApiContextType {
     Series: (page?: number) => Promise<any>; 
     TypeMovie: () => Promise<any>;
     PopularMovie: (page?: number) => Promise<any>;
+    Populars: (page?: number) => Promise<any>;
     RecommendedMovies: (id: string) => Promise<any>;
     SearchByType: (page: number ,value: string ,Type:string) => Promise<any>;
     MovieDetails: (id: string) => Promise<any>;
     ImageLogo: (id: string) => Promise<any>;
     MovieCast: (id: string) => Promise<any>;
     MovieVideo: (id: string) => Promise<any>;
+    CelebritieDetails: (id: string) => Promise<any>;
+    MovieCelebritie: (id: string) => Promise<any>;
     ImageLogoSeries: (id: string) => Promise<any>;
     SeriesDetails: (id: string) => Promise<any>;
     SeriesCast: (id: string) => Promise<any>;
@@ -60,6 +63,9 @@ export const ApiContextProvider: FC<ApiContextProviderProps> = ({ children }) =>
     const searchMovie = async (query: string) => {
         return fetchFromApi(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`);
     };
+    const Populars = async (page = 1) => {
+        return fetchFromApi(`https://api.themoviedb.org/3/trending/person/day?language=en-US&page=${page}`);
+    };
     
     const searchSeries = async (query: string) => {
         return fetchFromApi(`https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=false&language=en-US&page=1`);
@@ -104,6 +110,9 @@ export const ApiContextProvider: FC<ApiContextProviderProps> = ({ children }) =>
     const SeriesDetails = async (id: string) => {
         return fetchFromApi(`https://api.themoviedb.org/3/tv/${id}?language=en-US`);
     };
+    const CelebritieDetails = async (id: string) => {
+        return fetchFromApi(`https://api.themoviedb.org/3/person/${id}`);
+    };
 
     const RecommendedSeries = async (id: string) => {
         return fetchFromApi(`https://api.themoviedb.org/3/tv/${id}/recommendations`);
@@ -111,6 +120,10 @@ export const ApiContextProvider: FC<ApiContextProviderProps> = ({ children }) =>
 
     const SeriesCast = async (id: string) => {
         return fetchFromApi(`https://api.themoviedb.org/3/tv/${id}/credits`);
+    };
+    const MovieCelebritie = async (id: string) => {
+        return fetchFromApi(`https://api.themoviedb.org/3/person/${id}/movie_credits
+`);
     };
 
     const SeriesVideos = async (id: string) => {
@@ -128,8 +141,8 @@ export const ApiContextProvider: FC<ApiContextProviderProps> = ({ children }) =>
     return (
         <ApiContext.Provider value={{ 
             searchMovie, TopRated, Series, TypeMovie, PopularMovie, 
-            RecommendedMovies, MovieDetails, ImageLogo, MovieCast, 
-            MovieVideo, SeriesDetails, SeriesCast, SeriesVideos, searchSeries,
+            RecommendedMovies, MovieDetails, ImageLogo, MovieCast, Populars ,MovieCelebritie ,  
+            MovieVideo, SeriesDetails, SeriesCast, SeriesVideos, searchSeries,CelebritieDetails,
             setvideoDetails, videoDetails, RecommendedSeries, ImageLogoSeries, SearchByType
         }}>
             {children}
