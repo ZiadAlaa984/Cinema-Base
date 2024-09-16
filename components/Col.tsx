@@ -25,21 +25,21 @@ const Col: React.FC<any> = ({
         <div key={id} className="col-span-1  cursor-pointer">
           <Link href={linkPath} passHref>
             <div className="inner p-2 xl:p-4 border rounded-xl bg-transparent backdrop-blur-3xl drop-shadow-xl overflow-hidden border-white/35">
-              {/* Image */}
+
               <Image
                 src={`https://image.tmdb.org/t/p/w500/${src}`}
                 alt={name}
                 className="w-full min-h-[200px] md:min-h-[300px] object-cover rounded-xl group-hover/card:shadow-xl"
               />
 
-              {/* Info */}
+
               <div className="flex flex-col mt-2">
                 <h5 className="font-semibold text-white text-[10px] md:text-lg">
                   {name}
                 </h5>
 
                 <div className="flex flex-row md:text-sm text-[8px] text-white items-center mt-1">
-                  {/* Show star rating if available */}
+
                   {star !== undefined && (
                     <>
                       <Star className="h-3 md:h-4 text-yellow-400 fill-yellow-400" />
@@ -48,7 +48,7 @@ const Col: React.FC<any> = ({
                     </>
                   )}
                   
-                  {/* Show the known property or date */}
+
                   <span className="ms-1"> {  known ? known : date}</span>
                 </div>
               </div>

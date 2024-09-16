@@ -7,7 +7,7 @@ export default function Footer() {
         <h2 className="text-xl font-medium">create by ziad alaa</h2>
         <ul className="flex justify-between items-center gap-6">
           <li className="text-[12px]">
-            <a href="#">Terms</a>
+            <a href="#">Term</a>
           </li>
           <li className="text-[12px]"> 
             <a href="#">Privacy Policy</a>
